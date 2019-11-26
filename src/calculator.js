@@ -2,7 +2,8 @@ class Calculator {
 
 	constructor () {
 		this.last_value = 0;
-		this.values = [];
+		this.arr_slots  = [];
+		this.values 	= [];
 	}
 
 	add (...nums) {
@@ -27,10 +28,10 @@ class Calculator {
 			return this.last();
 		} 
 
-		if (str.includes('SLOT_')) {
+		if (str.includes('SLOT_') && !isNaN(str[str.length -1])) {
 			// Return the last value of the string because it's a number that will point to the slot
 			let slot_number = str[str.length -1];
-			return this.values[slot_number -1];
+			return this.arr_slots[slot_number];
 		}
 
 		return 0;
@@ -40,24 +41,24 @@ class Calculator {
 		let total = 1;
 
 		nums.forEach(num => {
-			if (num == 'LAST') {
-				num = this.last();
+			if (isNaN(num)) {
+				num = this.string_slot(num);
 			}
 			total *= num;
 		});
 
 		this.values.push(total);
 		this.last_value = total;
-
+		
 		return total;
 	}
 
 	set_slot (slot_number) {
-		this.last_value = this.values[slot_number -1];
+		this.arr_slots[slot_number] = this.last_value;
 	}
 
 	get_slot (slot_number) {
-		return this.values[slot_number -1];
+		return this.arr_slots[slot_number];
 	}
 
 	last () {
