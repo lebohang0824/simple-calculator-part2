@@ -7,19 +7,19 @@ class Calculator {
 	}
 
 	add (...nums) {
-		let total = 0;
+		let sum = 0;
 
 		nums.forEach(num => {
 			if (isNaN(num)) {
 				num = this.string_slot(num);
 			}
-			total += num;
+			sum += num;
 		});
 
-		this.values.push(total);
-		this.last_value = total;
+		this.values.push(sum);
+		this.last_value = sum;
 		
-		return total;
+		return sum;
 	}
 
 	// This function check if the string provided has certain keywords 
