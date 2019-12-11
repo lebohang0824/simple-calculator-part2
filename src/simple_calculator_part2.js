@@ -28,9 +28,9 @@ class Calculator {
 			return this.last();
 		} 
 
-		if (str.includes('SLOT_') && !isNaN(str[str.length -1])) {
+		if (str.includes('SLOT_')) {
 			// Return the last value of the string because it's a number that will point to the slot
-			let slot_number = str[str.length -1];
+			let slot_number = str.match(/\d+/g);
 			return this.arr_slots[slot_number];
 		}
 

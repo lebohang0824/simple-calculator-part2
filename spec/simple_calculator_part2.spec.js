@@ -1,4 +1,4 @@
-const { Calculator } = require('../src/calculator.js');
+const { Calculator } = require('../src/simple_calculator_part2.js');
 
 describe('Calculator calculator instance.add function', function () {
 
